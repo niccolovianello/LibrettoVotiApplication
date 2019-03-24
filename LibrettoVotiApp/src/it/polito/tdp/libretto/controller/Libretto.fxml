@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="254.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LibrettoController">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <TabPane prefHeight="183.0" prefWidth="767.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab closable="false" text="Nuovo">
+                  <content>
+                    <AnchorPane minWidth="-Infinity">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label text="Esame">
+                                       <HBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtNewEsame" prefHeight="27.0" prefWidth="285.0">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="15.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Label text="Voto">
+                                       <HBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtNewVoto" prefHeight="27.0" prefWidth="39.0">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="15.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Label text="Data">
+                                       <HBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtNewData" prefHeight="27.0" prefWidth="115.0" promptText="GG/MM/AAAA">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="15.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <Button fx:id="btnInsert" layoutX="556.0" layoutY="64.0" mnemonicParsing="false" onAction="#doInsert" text="Carica" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab closable="false" text="Cerca">
+                     <content>
+                        <VBox prefHeight="233.0" prefWidth="767.0">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label text="Esami con voto">
+                                       <HBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtCfr" prefHeight="27.0" prefWidth="55.0" promptText="&gt;, &lt;, =">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="15.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="txtVotoSrc" prefHeight="27.0" prefWidth="118.0" promptText="Inserisci un voto">
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="15.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <Label text="oppure">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="50.0" top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Times New Roman Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <HBox>
+                                 <children>
+                                    <Label text="Nome esame">
+                                       <HBox.margin>
+                                          <Insets left="20.0" top="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtEsameSrc" prefHeight="27.0" prefWidth="358.0">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Label text="Data">
+                                       <HBox.margin>
+                                          <Insets left="20.0" top="15.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="txtDataSrc" prefHeight="27.0" prefWidth="102.0" promptText="GG/MM/AAAA">
+                                       <HBox.margin>
+                                          <Insets left="5.0" top="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                              <Pane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="btnCerca" layoutX="565.0" layoutY="8.0" mnemonicParsing="false" onAction="#doCercaVoto" text="Cerca" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </VBox>
+                     </content>
+                </Tab>
+                  <Tab closable="false" text="Migliora">
+                    <content>
+                      <AnchorPane>
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Button fx:id="btnMigliora" mnemonicParsing="false" onAction="#doMigliora" text="Migliora">
+                                       <VBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <Button fx:id="btnCancella" mnemonicParsing="false" onAction="#doCancella" text="Cancella">
+                                       <VBox.margin>
+                                          <Insets left="20.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <Label layoutX="97.0" layoutY="24.0" text="i voti del libretto di" />
+                              <TextField fx:id="txtPuntiPiu" layoutX="222.0" layoutY="19.0" prefHeight="27.0" prefWidth="40.0" AnchorPane.leftAnchor="222.0" />
+                              <Label layoutX="271.0" layoutY="24.0" text="punto/i." />
+                              <Label layoutX="97.0" layoutY="70.0" text="i voti del libretto inferiori a" />
+                              <TextField fx:id="txtPuntiCancella" layoutX="268.0" layoutY="65.0" prefHeight="27.0" prefWidth="40.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Pane prefHeight="59.0" prefWidth="663.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="251.0" layoutY="13.0" text="Libretto voti" textFill="#d71818">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+</BorderPane>
