@@ -1,12 +1,15 @@
 package it.polito.tdp.libretto.controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.libretto.model.Libretto;
+import it.polito.tdp.libretto.model.Voto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class LibrettoController {
@@ -59,13 +62,36 @@ public class LibrettoController {
     private TextField txtPuntiCancella;
 
     @FXML
+    private TextArea txtResult;
+
+    @FXML
     void doCancella(ActionEvent event) {
 
     }
 
     @FXML
     void doCercaVoto(ActionEvent event) {
-
+    	txtResult.clear();
+    	int voto;
+    	String cfr = txtCfr.getText();
+    	try {
+    		voto = Integer.parseInt(txtVotoSrc.getText());
+    	} catch (NumberFormatException e) {
+    		txtResult.appendText("Devi inserire un numero compreso tra 0 e 30!");
+    		return;
+    	}
+    	if(voto < 0 || voto > 30) {
+    		txtResult.appendText("Devi inserire un numero compreso tra 0 e 30!");
+    	}
+    	if(!cfr.equals("<") && !cfr.equals(">") && !cfr.equals("=") &&
+    			!cfr.equals("<=") && !cfr.equals(">=")) {
+    		txtResult.appendText("Inserire in input i caratteri corretti please.");
+    	}
+    	
+    	List<Voto> voti = this.model.cercaVoti(cfr, voto);
+    	for(Voto c : voti) {
+    		txtResult.appendText(c.toString() + "\n");
+    	}
     }
 
     @FXML
@@ -93,6 +119,7 @@ public class LibrettoController {
         assert btnCancella != null : "fx:id=\"btnCancella\" was not injected: check your FXML file 'Libretto.fxml'.";
         assert txtPuntiPiu != null : "fx:id=\"txtPuntiPiu\" was not injected: check your FXML file 'Libretto.fxml'.";
         assert txtPuntiCancella != null : "fx:id=\"txtPuntiCancella\" was not injected: check your FXML file 'Libretto.fxml'.";
+        assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'Libretto.fxml'.";
 
     }
 

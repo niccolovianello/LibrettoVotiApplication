@@ -11,15 +11,17 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Libretto.fxml"));
 			BorderPane root = (BorderPane)loader.load();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Libretto model = new Libretto();
-			LibrettoController controller = loader.getController();
+			LibrettoController controller = (LibrettoController)loader.getController();
 			controller.setModel(model);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

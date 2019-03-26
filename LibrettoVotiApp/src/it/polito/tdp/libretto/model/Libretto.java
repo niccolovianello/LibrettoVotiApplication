@@ -3,6 +3,8 @@ package it.polito.tdp.libretto.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.polito.tdp.libretto.db.VotoDAO;
+
 public class Libretto {
 	
 	private List<Voto> voti ;
@@ -26,15 +28,21 @@ public class Libretto {
 	 * @param punti punteggio da ricerca
 	 * @return lista di {@link Voto} aventi quel punteggio (eventualmente vuota)
 	 */
-	public List<Voto> cercaVoti(int punti) {
-		List<Voto> result = new ArrayList<Voto>() ;
+	public List<Voto> cercaVoti(String c, int punti) {
+		VotoDAO dao = new VotoDAO();
 		
-		for(Voto v: this.voti) {
-			if(v.getPunti()==punti) {
-				result.add(v) ;
+		//Soluzione 1
+		/*List<Corso> corsi = dao.listAll();
+		List<Corso> result = new ArrayList<Corso>();
+				
+		for(Corso c : corsi) {
+			if(c.getPd() == periodo) {
+				result.add(c);
 			}
-		}
-		return result ;
+		}*/
+		
+		// Soluzione 2
+		return dao.listVotiCfr(c, punti);
 	}
 
 	/**
